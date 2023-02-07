@@ -33,23 +33,25 @@ struct Notes: View {
                 .fixedSize()
                 .buttonStyle(.plain)
                 .foregroundColor(.accentColor)
-            }//MARK: HSTACK
+            }// HSTACK
             Spacer()
             
             if notes.count >= 1 {
                 List {
-                    ForEach(notes) { note in
-                        HStack{
-                            Capsule()
-                                .frame(width: 4)
-                                .foregroundColor(.accentColor)
-                            Text(note.text)
-                                .lineLimit(1)
-                                .padding(.leading, 5)
-                        } //MARK: HSTACK
-                    } //MARK: FOREACH
+                    ForEach(0..<notes.count, id: \.self) { i in
+                        NavigationLink(destination: DetailView(note: notes[i], count: notes.count, index: i)) {
+                            HStack{
+                                Capsule()
+                                    .frame(width: 4)
+                                    .foregroundColor(.accentColor)
+                                Text(notes[i].text)
+                                    .lineLimit(1)
+                                    .padding(.leading, 5)
+                            }// HSTACK
+                        }// NAVIGATION
+                    } // LOOP
                     .onDelete(perform: delete)
-                }//MARK: LIST
+                }// LIST
             } else {
                 Spacer()
                 Image(systemName: "note.text")
@@ -61,7 +63,7 @@ struct Notes: View {
                 Spacer()
             }
             
-        }//MARK: - VSTACK
+        }// VSTACK
         .navigationTitle("Notes")
         .onAppear {
             load()
@@ -69,7 +71,7 @@ struct Notes: View {
         }
     }
     
-    //MARK: - FUNCTION
+    //MARK: - FUNCTIONS
     
     func getDocumentDirectory() -> URL {
         let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
