@@ -15,59 +15,62 @@ struct Notes: View {
     
     //MARK: BODY
     var body: some View {
-        VStack {
-            HStack(spacing: 6) {
-                TextField("Add New Note", text: $text)
+        NavigationView{
+            VStack {
+                HStack(spacing: 6) {
+                    TextField("Add New Note", text: $text)
+                    
+                    Button {
+                        guard text.isEmpty == false else { return }
+                        let note = Note(id: UUID(), text: text)
+                        notes.append(note)
+                        text = ""
+                        save()
+                    } label: {
+                        Image(systemName: "plus.circle")
+                            .font(.system(size: 42,weight: .semibold))
+                    }
+                    .fixedSize()
+                    .buttonStyle(.plain)
+                    .foregroundColor(.accentColor)
+                } // HSTACK
+                Spacer()
                 
-                Button {
-                    print("Button Click")
-                    guard text.isEmpty == false else { return }
-                    let note = Note(id: UUID(), text: text)
-                    notes.append(note)
-                    text = ""
-                    save()
-                } label: {
-                    Image(systemName: "plus.circle")
-                        .font(.system(size: 42,weight: .semibold))
+                if notes.count >= 1 {
+                    List {
+                        ForEach(0..<notes.count, id: \.self) { i in
+                            NavigationLink {
+                                DetailView(note: notes[i], count: notes.count, index: i)
+                            } label: {
+                                HStack{
+                                    Capsule()
+                                        .frame(width: 4)
+                                        .foregroundColor(.accentColor)
+                                    Text(notes[i].text)
+                                        .lineLimit(1)
+                                        .padding(.leading, 5)
+                                } // HSTACK
+                            } // NAVIGATION
+                        } // LOOP
+                        .onDelete(perform: delete)
+                    }// LIST
+                } else {
+                    Spacer()
+                    Image(systemName: "note.text")
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundColor(.gray)
+                        .opacity(0.25)
+                        .padding(25)
+                    Spacer()
                 }
-                .fixedSize()
-                .buttonStyle(.plain)
-                .foregroundColor(.accentColor)
-            }// HSTACK
-            Spacer()
-            
-            if notes.count >= 1 {
-                List {
-                    ForEach(0..<notes.count, id: \.self) { i in
-                        NavigationLink(destination: DetailView(note: notes[i], count: notes.count, index: i)) {
-                            HStack{
-                                Capsule()
-                                    .frame(width: 4)
-                                    .foregroundColor(.accentColor)
-                                Text(notes[i].text)
-                                    .lineLimit(1)
-                                    .padding(.leading, 5)
-                            }// HSTACK
-                        }// NAVIGATION
-                    } // LOOP
-                    .onDelete(perform: delete)
-                }// LIST
-            } else {
-                Spacer()
-                Image(systemName: "note.text")
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundColor(.gray)
-                    .opacity(0.25)
-                    .padding(25)
-                Spacer()
+                
+            } // VSTACK
+            .navigationTitle("Notes")
+            .onAppear {
+                load()
+                dump(notes)
             }
-            
-        }// VSTACK
-        .navigationTitle("Notes")
-        .onAppear {
-            load()
-            dump(notes)
         }
     }
     

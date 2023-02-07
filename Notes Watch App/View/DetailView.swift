@@ -36,21 +36,21 @@ struct DetailView: View {
                     .font(.title3)
                     .fontWeight(.semibold)
                     .multilineTextAlignment(.center)
-                
-            Spacer()
-                
-                // FOOTER
-                HStack(alignment: .center){
-                    Image(systemName: "gear")
-                        .imageScale(.large)
-                    Spacer()
-                    Text("\(count) / \(index)")
-                    Spacer()
-                    Image(systemName: "info.circle")
-                        .imageScale(.large)
-                }
-                .foregroundColor(.secondary)
             }
+            
+            Spacer()
+            
+            // FOOTER
+            HStack(alignment: .center){
+                Image(systemName: "gear")
+                    .imageScale(.large)
+                Spacer()
+                Text("\(count) / \(index)")
+                Spacer()
+                Image(systemName: "info.circle")
+                    .imageScale(.large)
+            }
+            .foregroundColor(.secondary)
         }
     }
 }
