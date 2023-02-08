@@ -69,7 +69,6 @@ struct Notes: View {
             .navigationTitle("Notes")
             .onAppear {
                 load()
-                dump(notes)
             }
         }
     }

@@ -12,6 +12,7 @@ struct DetailView: View {
     let note: Note
     let count: Int
     let index: Int
+    @State var isCreditsPresented = false
     
     //MARK: - BODY
     var body: some View {
@@ -28,9 +29,7 @@ struct DetailView: View {
                     .fontWeight(.semibold)
                     .multilineTextAlignment(.center)
             }
-            
             Spacer()
-            
             // FOOTER
             HStack(alignment: .center){
                 Image(systemName: "gear")
@@ -38,8 +37,15 @@ struct DetailView: View {
                 Spacer()
                 Text("\(count) / \(index)")
                 Spacer()
+                
                 Image(systemName: "info.circle")
                     .imageScale(.large)
+                    .onTapGesture {
+                        isCreditsPresented.toggle()
+                    }
+                    .sheet(isPresented: $isCreditsPresented, content: {
+                        CreditsView()
+                    })
             }
             .foregroundColor(.secondary)
         }
