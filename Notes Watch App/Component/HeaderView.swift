@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HeaderView: View {
-    
     var title: String = ""
     
     //MARK: - BODY

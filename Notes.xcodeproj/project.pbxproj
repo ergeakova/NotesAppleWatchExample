@@ -15,6 +15,7 @@
 		3C6EE48229901886002D813B /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6EE48129901886002D813B /* Note.swift */; };
 		3C80B514299440DA00420154 /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C80B513299440DA00420154 /* CreditsView.swift */; };
 		3C80B5172994419900420154 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C80B5162994419900420154 /* HeaderView.swift */; };
+		3CB554142995811B0071F197 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB554132995811B0071F197 /* SettingsView.swift */; };
 		3CB9982E2992BCA7009358B7 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB9982D2992BCA7009358B7 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		3C6EE48129901886002D813B /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		3C80B513299440DA00420154 /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
 		3C80B5162994419900420154 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		3CB554132995811B0071F197 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		3CB9982D2992BCA7009358B7 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,6 +112,7 @@
 				3C6EE46F299014AE002D813B /* Notes.swift */,
 				3CB9982D2992BCA7009358B7 /* DetailView.swift */,
 				3C80B513299440DA00420154 /* CreditsView.swift */,
+				3CB554132995811B0071F197 /* SettingsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CB554142995811B0071F197 /* SettingsView.swift in Sources */,
 				3C6EE470299014AE002D813B /* Notes.swift in Sources */,
 				3C80B5172994419900420154 /* HeaderView.swift in Sources */,
 				3CB9982E2992BCA7009358B7 /* DetailView.swift in Sources */,
